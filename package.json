@@ -1,0 +1,35 @@
+{
+  "name": "pomodorotimerplugin",
+  "version": "0.1.0-beta",
+  "description": "A ChartJS Plugin for turning a doughnut chart into a PomodoroTimer",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wtvamp/PomodoroTimerPlugin.git"
+  },
+  "keywords": [
+    "chartjs",
+    "pomodoro",
+    "timer",
+    "plugin",
+    "chart.js"
+  ],
+  "author": "Warren Thompson (wtvamp)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wtvamp/PomodoroTimerPlugin/issues"
+  },
+  "homepage": "https://github.com/wtvamp/PomodoroTimerPlugin#readme",
+  "dependencies": {
+    "chart.js": "^4.4.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9"
+  }
+}
