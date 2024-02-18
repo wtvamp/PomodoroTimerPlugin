@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer Plugin Sample</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Ensure the path to your plugin script is correct -->
+    <script src="../dist/pomodoro-timer-plugin.js"></script>
+</head>
+<body>
+    <canvas id="pomodoroChart"></canvas>
+    <input type="text" id="timerInput" placeholder="Enter time in minutes" value="2" min="1" max="60" />
+    <button id="timerStart" class="pomodoroButton">Start</button>
+    <button id="timerStop" class="pomodoroButton">Stop</button>
+    <button id="timerReset" class="pomodoroButton">Reset</button>
+    <script>
+        Chart.register(PomodoroTimerPlugin);
+        const el = document.getElementById('pomodoroChart');
+        const data = {
+            labels: ['Timer','White Space'],
+            datasets: [{
+            label: 'Pomodoro Timer',
+            data: [0,12],
+            backgroundColor: [
+                'rgba(255, 26, 104, 1)',
+                'rgba(255, 26, 104, 0.1)',
+            ],
+            borderColor: [
+                'rgba(255, 26, 104, 1)',
+                'rgba(255, 26, 104, 0.0)',
+            ],
+            cutout: '95%'
+            }]
+        };
+        const pomodoroChart = new Chart(el, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                plugins: {
+                    PomodoroTimerPlugin: {
+                        timerInputId: "timerInput",
+                        startButtonId: "timerStart",
+                        stopButtonId: "timerStop",
+                        resetButtonId: "timerReset"
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
