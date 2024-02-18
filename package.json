@@ -1,6 +1,6 @@
 {
     "name": "pomodorotimerplugin",
-    "version": "0.1.0-beta",
+    "version": "0.2.0-beta",
     "description": "A ChartJS Plugin for turning a doughnut chart into a PomodoroTimer",
     "main": "index.js",
     "scripts": {

@@ -3,11 +3,11 @@ const PomodoroTimerPlugin = {
 
     beforeDraw: function (chart, args) {
         const { ctx, chartArea: { width, height } } = chart;
-        let { time, minutes, seconds } = this.privateVariables.get(this);
+        let { time, minutes, seconds, textColor } = this.privateVariables.get(this);
 
         ctx.save();
         ctx.font = `bolder ${Math.min(width, height) * 0.1}px Arial`;
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = textColor;
         if (minutes === undefined) {
             ctx.fillText("Enter Time", width / 2, height / 2);
         }
@@ -19,11 +19,11 @@ const PomodoroTimerPlugin = {
         ctx.font = `bolder ${Math.min(width, height) * 0.05}px Arial`;
         ctx.textAlign = 'center';
         if (minutes === undefined) {
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = textColor;
             ctx.fillText('Then Press Start', width / 2, height / 2 + Math.min(width, height) * 0.15);
         }
         else if (time > 0) {
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = textColor;
             ctx.fillText('Work', width / 2, height / 2 + Math.min(width, height) * 0.15);
         }
         if (time <= 0) {
@@ -36,7 +36,7 @@ const PomodoroTimerPlugin = {
 
     install: function (chart, args, options) {
         console.log("Installing Pomodoro Timer Plugin");
-        const { timerInputId, startButtonId, stopButtonId, resetButtonId } = options;
+        const { timerInputId, startButtonId, stopButtonId, resetButtonId, textColor } = options;
         const timeElement = document.getElementById(timerInputId);
         const startButtonElement = document.getElementById(startButtonId);
         const stopButtonElement = document.getElementById(stopButtonId);
@@ -54,12 +54,13 @@ const PomodoroTimerPlugin = {
         if (!resetButtonElement) {
             throw new Error(`Reset button element with ID '${stopButtonId}' not found.`);
         }
-
+        console.log(textColor);
         this.privateVariables.set(this, {
             time: timeElement.value * 60,
             timeLeft: 0,
             startingMinutes: timeElement.value,
-            clear: null
+            clear: null,
+            textColor: textColor === undefined ? "black" : "purple"
         });
 
         stopButtonElement.disabled = true;
