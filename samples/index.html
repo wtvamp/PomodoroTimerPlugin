@@ -24,19 +24,19 @@
         Chart.register(PomodoroTimerPlugin);
         const el = document.getElementById('pomodoroChart');
         const data = {
-            labels: ['Timer','White Space'],
+            labels: ['Timer','Time Left'],
             datasets: [{
-            label: 'Pomodoro Timer',
-            data: [0,12],
-            backgroundColor: [
-                'rgba(255, 26, 104, 1)',
-                'rgba(255, 26, 104, 0.1)',
-            ],
-            borderColor: [
-                'rgba(255, 26, 104, 1)',
-                'rgba(255, 26, 104, 0.0)',
-            ],
-            cutout: '95%'
+                label: 'Pomodoro Timer',
+                data: [0,12],
+                backgroundColor: [
+                    'rgba(51, 51, 204, 1)',
+                    'rgba(51, 51, 204, 0.1)',
+                ],
+                borderColor: [
+                    'rgba(51, 51, 204, 1)',
+                    'rgba(51, 51, 204, 0.0)',
+                ],
+                cutout: '80%'
             }]
         };
         const pomodoroChart = new Chart(el, {
@@ -54,7 +54,7 @@
                         display: false
                     },
                     tooltip: {
-                        enabled: false
+                        enabled: true
                     }
                 }
             }
