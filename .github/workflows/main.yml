@@ -8,6 +8,7 @@ on:
 jobs:
   test-and-publish:
     runs-on: ubuntu-latest
+    environment: NPM
     steps:
     - uses: actions/checkout@v2
 
