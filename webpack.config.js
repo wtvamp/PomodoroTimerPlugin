@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'pomodoro-timer-plugin.js',
+    publicPath: '/dist/',
     library: {
       name: 'PomodoroTimerPlugin', // Specify the library name
       type: 'umd', // Expose the plugin as UMD
@@ -34,5 +35,12 @@ module.exports = {
       amd: 'chart.js',
       root: 'Chart', // Provide the global variable name in browser environment
     },
+  },
+  devServer: {
+    static: {
+        directory: path.join(__dirname, 'samples'),
+    },
+    open: true,
+    hot: true
   },
 };
