@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    margin: 0; /* Removes default margin */
+}
+
+.page {
+    text-align: center;            
+}
+
+div#chartBox {
+    width: 50vw;
+    padding: 5vw;
+    border: 0.5vw solid #86868e;
+    border-radius: 2vw;
+    background-color: lavender;
+}
+
+div#buttonsBox {
+    margin-top: 2vh;
+}

@@ -4,22 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer Plugin Sample</title>
-    <link rel="stylesheet" type="text/css" href="index.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../dist/pomodoro-timer-plugin.js"></script>
 </head>
 <body>
-    <div class="page">
-        <div id="chartBox">
-            <canvas id="pomodoroChart"></canvas>
-        </div>
-        <div id="buttonsBox">
-            <input type="text" id="timerInput" placeholder="Enter time in minutes" value="2" min="1" max="60" />
-            <button id="timerStart" class="pomodoroButton">Start</button>
-            <button id="timerStop" class="pomodoroButton">Stop</button>
-            <button id="timerReset" class="pomodoroButton">Reset</button>
-        </div>
-    </div>
+    <canvas id="pomodoroChart"></canvas>
+    <input type="text" id="timerInput" placeholder="Enter time in minutes" value="2" min="1" max="60" />
+    <button id="timerStart" class="pomodoroButton">Start</button>
+    <button id="timerStop" class="pomodoroButton">Stop</button>
+    <button id="timerReset" class="pomodoroButton">Reset</button>
     <script>
         Chart.register(PomodoroTimerPlugin);
         const el = document.getElementById('pomodoroChart');
