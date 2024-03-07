@@ -3,6 +3,13 @@
 
 This project provides a Pomodoro Timer Plugin designed to integrate with Chart.js, offering a unique way to visualize Pomodoro cycles within chart elements. Ideal for productivity apps or any application that utilizes the Pomodoro Technique and Chart.js for data visualization.
 
+## Features
+
+- **Customizable Text Prompts**: Configure messages for different timer states like start, work session, and completion.
+- **Dynamic Positioning**: Place text prompts at the top, bottom, or center of the chart area.
+- **Flexible Styling**: Customize text color and adjust padding dynamically to fit the text.
+
+
 ## Installation and Setup
 
 To get started with the Pomodoro Timer Plugin, clone the repository and install the necessary dependencies.
@@ -110,7 +117,10 @@ const pomodoroChart = new Chart(el, {
                 timerInputId: "timerInput",
                 startButtonId: "timerStart",
                 stopButtonId: "timerStop",
-                resetButtonId: "timerReset"
+                resetButtonId: "timerReset",
+                largeTextLocation: "top",
+                smallTextLocation: "top",
+                textColor: "purple"
             },
             legend: {
                 display: false
@@ -122,6 +132,74 @@ const pomodoroChart = new Chart(el, {
     }
 });
 ```
+# Version 0.4.0-beta
+
+## Customize Text Location:
+
+The Pomodoro Timer Plugin now supports customizable text messages, allowing you to tailor the plugin's display to better fit your application's needs or language preferences. The customizable text options include:
+
+- `largeTextLocation`: The startPrompt and hours/minutes countdown location // Options: "top", "center", "bottom"
+- `smallTextLocation`: The secondaryPrompt and timePassing/Complete message location, // Options: "top", "center", "bottom"
+
+Both options default to "center" placement
+
+## Customizing Text Messages
+
+The Pomodoro Timer Plugin now supports customizable text messages, allowing you to tailor the plugin's display to better fit your application's needs or language preferences. The customizable text options include:
+
+- `startPrompt`: The message displayed before the timer starts.
+- `secondaryPrompt`: Additional instructions or information displayed before starting the timer.
+- `timePassingMessage`: The message shown while the timer is running.
+- `timeCompleteMessage`: The message displayed when the timer completes.
+
+### Configuring Text Messages
+
+To configure these messages, include them in the plugin options when initializing the Pomodoro Timer Plugin with Chart.js:
+
+```javascript
+const pomodoroChart = new Chart(el, {
+    type: 'doughnut',
+    data: data,
+    options: {
+        plugins: {
+            PomodoroTimerPlugin: {
+                timerInputId: "timerInput",
+                startButtonId: "timerStart",
+                stopButtonId: "timerStop",
+                resetButtonId: "timerReset",
+                textColor: "#ff1a68", // Optional: Customize text color
+                largeTextLocation: "top", // Options: "top", "center", "bottom"
+                smallTextLocation: "bottom", // Options: "top", "center", "bottom"
+                startPrompt: "Ready to Focus?",
+                secondaryPrompt: "Set Duration and Start",
+                timePassingMessage: "Stay Focused...",
+                timeCompleteMessage: "Take a Break!"
+            }
+        }
+    }
+});
+```
+
+This configuration allows you to provide a more personalized experience to users of your application, guiding them through the Pomodoro technique with custom messages.
+
+### Dynamically Updating Messages
+
+You can also update these messages dynamically after the chart has been initialized. This is useful for applications that need to change the language or messaging based on user interactions or other conditions. Use the `updateMessages` method provided by the plugin:
+
+```javascript
+// Assuming pomodoroChart is your Chart.js instance with the Pomodoro Timer Plugin initialized
+pomodoroChart.options.plugins.PomodoroTimerPlugin.updateMessages({
+    startPrompt: "New Start Message",
+    secondaryPrompt: "New Instructions",
+    timePassingMessage: "Keep Going!",
+    timeCompleteMessage: "Break Time!"
+});
+
+// Don't forget to update the chart to reflect the changes
+pomodoroChart.update();
+```
+
+This method allows for real-time updates to the messaging within the Pomodoro Timer Plugin, enhancing the flexibility and dynamism of your application.
 
 
 ## Contributing
