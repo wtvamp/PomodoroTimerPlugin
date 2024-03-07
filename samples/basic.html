@@ -14,7 +14,7 @@
     <button id="timerStop" class="pomodoroButton">Stop</button>
     <button id="timerReset" class="pomodoroButton">Reset</button>
     <script>
-        Chart.register(PomodoroTimerPlugin);
+        Chart.register(PomodoroTimerPlugin.default);
         const el = document.getElementById('pomodoroChart');
         const data = {
             labels: ['Timer','White Space'],
@@ -41,7 +41,9 @@
                         timerInputId: "timerInput",
                         startButtonId: "timerStart",
                         stopButtonId: "timerStop",
-                        resetButtonId: "timerReset"
+                        resetButtonId: "timerReset",
+                        largeTextLocation: "top",
+                        smallTextLocation: "bottom",
                     },
                     legend: {
                         display: false
