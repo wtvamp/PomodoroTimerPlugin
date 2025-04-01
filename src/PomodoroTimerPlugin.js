@@ -8,6 +8,18 @@ const PomodoroTimerPlugin = {
         return time;
     },
 
+    setTime: function(newTime) {
+        let settings = this.privateVariables.get(this) || {};
+        const minutes = Math.floor(newTime / 60);
+        const seconds = newTime % 60;
+        this.privateVariables.set(this, {
+            ...settings,
+            time: newTime,
+            minutes: minutes < 10 ? '0' + minutes : minutes,
+            seconds: seconds < 10 ? '0' + seconds : seconds
+        });
+    },
+    
     getCurrentTask: function(){
         const { timePassingMessage } = this.privateVariables.get(this);
         return timePassingMessage;
